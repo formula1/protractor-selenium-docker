@@ -1,0 +1,14 @@
+{
+  "name": "protractor-docker-setup",
+  "dependencies": {
+    "npm-run-all": "^4.0.1",
+    "protractor": "4.0.9"
+  },
+  "scripts": {
+    "test": "npm-run-all test:up:* test:run test:down",
+    "test:up:init": "docker-compose up --remove-orphans -d",
+    "test:up:scale": "docker-compose scale chromenode=5",
+    "test:run": "protractor docker-selenium-grid-conf.js",
+    "test:down": "docker-compose down --remove-orphans"
+  }
+}
